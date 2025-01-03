@@ -59,15 +59,6 @@
     <commons.release.isDistModule>true</commons.release.isDistModule>
     <commons.distSvnStagingUrl>scm:svn:https://dist.apache.org/repos/dist/dev/commons/imaging</commons.distSvnStagingUrl>
     <project.build.outputTimestamp>2024-04-18T14:55:29Z</project.build.outputTimestamp>
-    <!-- JaCoCo: Don't make code coverage worse than: -->
-    <!--<commons.jacoco.haltOnFailure>true</commons.jacoco.haltOnFailure>
-    <commons.jacoco.classRatio>0.96</commons.jacoco.classRatio>
-    <commons.jacoco.instructionRatio>0.77</commons.jacoco.instructionRatio>
-    <commons.jacoco.methodRatio>0.80</commons.jacoco.methodRatio>
-    <commons.jacoco.branchRatio>0.64</commons.jacoco.branchRatio>
-    <commons.jacoco.lineRatio>0.77</commons.jacoco.lineRatio>
-    <commons.jacoco.complexityRatio>0.60</commons.jacoco.complexityRatio>
-  -->
   </properties>
   <scm>
     <connection>scm:git:http://gitbox.apache.org/repos/asf/commons-imaging.git</connection>
@@ -90,19 +81,6 @@
   <build>
     <defaultGoal>clean verify apache-rat:check checkstyle:check spotbugs:check javadoc:javadoc</defaultGoal>
     <plugins>
-      <!-- <plugin>
-         <groupId>org.pitest</groupId>
-         <artifactId>pitest-maven</artifactId>
-         <version>1.15.2</version>
-         <configuration>
-           <targetClasses>
-             <param>org.apache.commons.imaging.*</param>
-           </targetClasses>
-           <targetTests>
-             <param>org.apache.commons.imaging.*</param>
-           </targetTests>
-         </configuration>
-       </plugin>-->
       <!-- Plugin per JMH -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -148,46 +126,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
       </plugin>
-
-      <!--<plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.24</version>
-        <configuration>
-          <signature>
-            <groupId>org.codehaus.mojo.signature</groupId>
-            <artifactId>java18</artifactId>
-            <version>1.0</version>
-          </signature>
-        </configuration>
-        <executions>
-          <execution>
-            <id>check-java-api</id>
-            <phase>test</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>-->
-      <!--<plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <archive combine.children="append">
-            <manifestEntries>
-              <Automatic-Module-Name>${commons.module.name}</Automatic-Module-Name>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -253,9 +191,6 @@
             <targetClasses>
               <param>org.apache.commons.imaging.formats.tiff.*</param>
             </targetClasses>
-            <!--<targetTests>
-                    <param>org.apache.commons.imaging.formats.tiff.*</param>
-            </targetTests>-->
           </configuration>
         </plugin>
         <plugin>
@@ -322,13 +257,11 @@
       <groupId>org.openjdk.jmh</groupId>
       <artifactId>jmh-core</artifactId>
       <version>1.37</version> <!-- Usa la versión más reciente disponible -->
-      <!-- <scope>test</scope>-->
     </dependency>
     <dependency>
       <groupId>org.openjdk.jmh</groupId>
       <artifactId>jmh-generator-annprocess</artifactId>
       <version>1.37</version>
-      <!--<scope>test</scope>-->
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -407,55 +340,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
       </plugin>
-      <!--<plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>taglist-maven-plugin</artifactId>
-        <configuration>
-          <tagListOptions>
-            <tagClasses>
-              <tagClass>
-                <displayName>Needs Work</displayName>
-                <tags>
-                  <tag>
-                    <matchString>TODO</matchString>
-                    <matchType>exact</matchType>
-                  </tag>
-                  <tag>
-                    <matchString>FIXME</matchString>
-                    <matchType>exact</matchType>
-                  </tag>
-                  <tag>
-                    <matchString>XXX</matchString>
-                    <matchType>exact</matchType>
-                  </tag>
-                </tags>
-              </tagClass>
-              <tagClass>
-                <displayName>Noteable Markers</displayName>
-                <tags>
-                  <tag>
-                    <matchString>NOTE</matchString>
-                    <matchType>exact</matchType>
-                  </tag>
-                  <tag>
-                    <matchString>NOPMD</matchString>
-                    <matchType>exact</matchType>
-                  </tag>
-                  <tag>
-                    <matchString>NOSONAR</matchString>
-                    <matchType>exact</matchType>
-                  </tag>
-                </tags>
-              </tagClass>
-            </tagClasses>
-          </tagListOptions>
-        </configuration>
-      </plugin>-->
-      <!-- <plugin>
-         <groupId>org.jacoco</groupId>
-         <artifactId>jacoco-maven-plugin</artifactId>
-         <version>0.8.13-SNAPSHOT</version>
-         </plugin>-->
       <plugin>
         <groupId>org.apache.rat</groupId>
         <artifactId>apache-rat-plugin</artifactId>
